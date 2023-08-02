@@ -79,7 +79,7 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
  */
  Cypress.Commands.add( 'validateTlsArticlePage', () => {
 	cy.log( 'Validating the tls article page' );
-	cy.visit(Cypress.env('prod_url')+articlePageURL, { timeout: 3000 } );
+	cy.visit(Cypress.env('prod_url')+articlePageURL, { timeout: 3000 });
 	cy.get(heroBanner).should('have.length.at.least', 1);
 	cy.get(ads).should('not.be.null');
 	cy.get(collectionSlices).should('have.length.at.least', 1);
@@ -91,21 +91,20 @@ Cypress.Commands.add( 'validateTlsHomePage', () => {
  */
 Cypress.Commands.add( 'validateTlsArchivePage', () => {
 	cy.log( 'Validating the tls archive page' );
-	cy.visit(Cypress.env('prod_url')+archivePageURL, { timeout: 5000 });
+	cy.visit(Cypress.env('prod_url')+archivePageURL, { timeout: 3000 });
 	cy.acceptCookieBanner();
 	cy.title().should('eq', 'The Archive - TLS');
 	//dropdownForYears Validation
 	cy.get(VerifyDropdownForYears).click();
 	cy.get(selectYears).eq(0).click();
 	cy.get(VerifyDropdownForYears).wrap(2023).should('be.gte', 2023);
-	//ValidationFor Container
+	// ValidationFor Container
 	cy.get(VerifyContainer).should('not.be.null');
 	cy.get(VerifyShowmoreButton).should('be.visible');
 	cy.get(VerifyArchiveLinkYear).should('be.visible');
 	//searchFilter Validation
 	cy.get(VerifySearchFilter).click().type('Mary Beard').type('{enter}')
 	cy.get(VerifySearchedAuthorPage).should('not.be.null');
-	
 } );
 
 /**
