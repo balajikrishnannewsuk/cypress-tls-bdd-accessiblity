@@ -67,7 +67,7 @@ jobs:
           path:  TLS_E2E_Automation/cypress/cucmberReport.tar
       - run:
           name: Send Cucumber report to Slack
-          #when: on_fail
+          when: on_fail
           command: |
             pwd
             cd TLS_E2E_Automation
